@@ -80,3 +80,18 @@ def create_rental
       puts 'Invalid person or book ID'
     end
 end
+
+def list_all_rentals
+    print 'ID of person: '
+    id = gets.chomp
+    person = @persons.filter { |val| val.id == id.to_i }
+    if person.length.positive?
+        person = person[0]
+        @rentals.each do |rent|
+            puts "Date: #{rent.date}, Book: #{rent.book.title} by #{rent.book.author}" unless rent.person.id != person.id
+        end
+    else
+      puts 'No person found with that ID'
+    end
+    ''
+end
