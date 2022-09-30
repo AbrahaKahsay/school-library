@@ -55,4 +55,4 @@ def create_book
     new_book = Book.new(title, author)
     @books.push(new_book)
     puts 'Book created successfuly'
-  end
+end
