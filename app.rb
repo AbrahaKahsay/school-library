@@ -1,4 +1,8 @@
-
+require './person'
+require './student'
+require './teacher'
+require './book'
+require './rental'
 # Decare a variables to hold lists
 @books = []
 @persons = []
@@ -17,7 +21,7 @@ def list_persons
     puts "#{index} Name: #{person.name}, Id: #{person.id}, Age: #{person.age}"
 end
 
-# Create a person
+# Create a person (teacher or student, not a plain Person).
 def create_person
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]:'
     
@@ -47,6 +51,7 @@ def create_person
     end
 end
 
+# Create a book.
 def create_book
     print 'Title: '
     title = gets.chomp
@@ -57,6 +62,7 @@ def create_book
     puts 'Book created successfuly'
 end
 
+# Create a rental.
 def create_rental
     puts 'Select a book from the following list by number'
 
@@ -81,6 +87,7 @@ def create_rental
     end
 end
 
+# List all rentals for a given person id.
 def list_all_rentals
     print 'ID of person: '
     id = gets.chomp
