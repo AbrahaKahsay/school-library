@@ -3,7 +3,7 @@
 @books = []
 @persons = []
 @rentals = []
-classroom = Classroom.new("CR 1001")
+@classroom = Classroom.new("CR 1001")
 
 # list all books
 def list_books
@@ -46,3 +46,13 @@ def create_person
         puts 'Invalid Person'
     end
 end
+
+def create_book
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    new_book = Book.new(title, author)
+    @books.push(new_book)
+    puts 'Book created successfuly'
+  end
