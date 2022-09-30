@@ -56,3 +56,27 @@ def create_book
     @books.push(new_book)
     puts 'Book created successfuly'
 end
+
+def create_rental
+    puts 'Select a book from the following list by number'
+
+    list_books
+    book_id = gets.chomp
+    book = nil
+    book = @books[book_id.to_i] if book_id.to_i.to_s == book_id && book_id.to_i < @books.length
+    puts 'Select a person from the following list by number (not id)'
+
+    list_persons
+    person = nil
+    person_id = gets.chomp
+    person = @persons[person_id.to_i] if person_id.to_i.to_s == person_id && person_id.to_i < @persons.length
+    if book && person
+      print 'Date: '
+      date = gets.chomp
+      new_rental = Rental.new(date, book, person)
+      @rentals.push(new_rental)
+      puts 'Rental created successfuly'
+    else
+      puts 'Invalid person or book ID'
+    end
+end
