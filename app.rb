@@ -8,19 +8,26 @@ require './rental'
 @books = []
 @persons = []
 @rentals = []
-@classroom = Classroom.new('CR 1001')
-
+# class_room = Classroom.new("CR1001")
 # list all books
 def list_books
-  @books.each_with_index do |book, index|
-    puts "#{index} Title: #{book.title}, Author: #{book.author}"
+  if @books.empty?
+    puts 'The books list is empty!'
+  else
+    @books.each_with_index do |book, index|
+      puts "#{index} Title: #{book.title}, Author: #{book.author}"
+    end
   end
 end
 
 # list all people
 def list_persons
-  @persons.each_with_index do |person, index|
-    puts "#{index} Name: #{person.name}, Id: #{person.id}, Age: #{person.age}"
+  if @persons.empty?
+    puts "People's list is empty!"
+  else
+    @persons.each_with_index do |person, index|
+      puts "#{index} Name: #{person.name}, Id: #{person.id}, Age: #{person.age}"
+    end
   end
 end
 
@@ -29,17 +36,21 @@ def create_person
   print 'Do you want to create a student (1) or a teacher (2)? [Input the number]:'
 
   input = gets.chop.to_i
+
   if [1, 2].include?(input)
-    print 'Name: '
-    name = gets.chomp
     print 'age: '
     age = gets.chomp.to_i
+    print 'Name: '
+    name = gets.chomp
+
     case input
     when 1
+      print 'Classroom: '
+      classroom = gets.chomp
       print 'Has parent permission [Y/N]: '
-      permission = gets.chomp
-      permission.upcase = 'Y'
-      student = Student.new(age, classroom, name, permission)
+      parent_permission = gets.chomp
+      parent_permission = parent_permission.upcase! == 'Y'
+      student = Student.new(age, classroom, name, parent_permission)
       @persons.push(student)
       puts 'Person created  successfully'
     when 2
@@ -61,7 +72,7 @@ def create_book
   print 'Author: '
   author = gets.chomp
   new_book = Book.new(title, author)
-  @books.push(new_book)
+  @books << new_book
   puts 'Book created successfuly'
 end
 

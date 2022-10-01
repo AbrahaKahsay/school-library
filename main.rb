@@ -1,15 +1,16 @@
 # rubocop:disable Metrics/CyclomaticComplexity
 require './app'
 def main # rubocop:disable Metrics/MethodLength
+  puts "\nWELCOME TO OUR SCHOOL LIBRARY \n"
   menu = [
-    "\n\nPlease choose an option by entering a bunber",
+    "\nPlease choose an option by entering a number",
     '1 - List all books',
     '2 - List all people',
     '3 - create a person',
     '4 - create a book',
     '5 - create a rental',
     '6 - List all rental for a given person id',
-    "7 - Exit \n\n"
+    "7 - Exit \n"
   ]
   puts menu
 
