@@ -50,13 +50,13 @@ def create_person
       print 'Has parent permission [Y/N]: '
       parent_permission = gets.chomp
       parent_permission = parent_permission.upcase! == 'Y'
-      student = Student.new(age, classroom, name, parent_permission)
+      student = Student.new(age: age, classroom: classroom, name: name, parent_permission: parent_permission)
       @persons.push(student)
       puts 'Person created  successfully'
     when 2
       print 'Specialization: '
       specialization = gets.chomp
-      teacher = Teacher.new(age, specialization, name)
+      teacher = Teacher.new(age: age, specialization: specialization, name: name)
       @persons.push(teacher)
       puts 'Person created  successfully'
     end
